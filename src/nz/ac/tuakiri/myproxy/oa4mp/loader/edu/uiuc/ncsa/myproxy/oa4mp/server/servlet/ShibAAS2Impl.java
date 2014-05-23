@@ -17,7 +17,7 @@ public class ShibAAS2Impl extends AAS2Impl {
 		
 		UsernameTransformer transformer = getServiceEnvironment().getUsernameTransformer();
 		if ((transformer instanceof ShibUsernameTransformer) && ((ShibUsernameTransformer)transformer).isProcessDuringStart()) {
-			String username = ((ShibUsernameTransformer)transformer).doIt(state.getRequest());
+			String username = ((ShibUsernameTransformer)transformer).createUsername(state.getRequest());
 			((ServiceTransaction)state.getTransaction()).setUsername(username);
 
 			info("ShibAAS2Impl: storing user name = " + username);

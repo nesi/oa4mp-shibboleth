@@ -32,7 +32,7 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 		debug("ShibUsernameTransformer");
 	}
 
-	public String doIt(HttpServletRequest request) {
+	public String createUsername(HttpServletRequest request) {
 		String userName = null;
 		Map<String, String> attributeMap = null;
 		if (config.getAttributesToSend() != null) {
@@ -151,7 +151,7 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 		debug("ShibUsernameTransformer.createMyProxyUsername");
 		
 		if (!isProcessDuringStart()) {
-			return doIt(request);
+			return createUsername(request);
 		} else {
 			return null;
 		}
