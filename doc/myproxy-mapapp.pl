@@ -4,7 +4,7 @@
 
 mapapp / extapp script for myproxy to build DN / certificate extensions from 
 attributes passed by oa4mp-shibboleth as username.
-moa4mp-shibboleth allows request attributes to be submitted as username in CSV format.
+oa4mp-shibboleth allows request attributes to be submitted as username in CSV format.
 For example, these attributes could come from an authentication
 that the user performed with shibboleth.
 
