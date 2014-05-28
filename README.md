@@ -1,7 +1,7 @@
 oa4mp-shibboleth
 ================
 
-Version 1.1.1
+Version 1.1.1-nesi.1
 
 Michael Keller <michael.keller@canterbury.ac.nz>, 14/05/2014
 
@@ -50,9 +50,6 @@ has to be added to the server configuration file [4]:
 
 - in the `<authorizationServlet>` element, set the attribute `useHeader="false"`
 
-- if the user name returned by OAuth should be human readable, and not as CSV (see below), 
-  in the`<authorizationServlet>` element, set the attribute `returnDnAsUsername="true` 
-  
 - below the `<service>` element, add the following custom element:
 
 ````
@@ -60,7 +57,8 @@ has to be added to the server configuration file [4]:
     attributesToSend="[attributes]"
     myproxyWorkaround="true"
     requireHeader="true"
-    processDuringStartAction="true" />
+    processDuringStartAction="true" 
+    returnDnAsUsername="true" />
 
 <!--
   attributesToSend:         CSV list of request attributes to be sent as to 
@@ -68,14 +66,17 @@ has to be added to the server configuration file [4]:
   myproxyWorkaround:        Prepend a "/" to the username sent to MyProxy, to 
                             get around MyProxy's limitation in username length
   requireHeader:            Require at least one attribute to be present. This 
-                            will cause an exception to be thrown if none of the
-                            configured attributes can be found. This check works
-                            in addition to the checking that is done on the 
-                            MyProxy host while the DN / extensions for the 
+                            will cause an exception to be thrown if none of 
+                            the configured attributes can be found. This check 
+                            works in addition to the checking that is done on 
+                            the MyProxy host while the DN / extensions for the 
                             certificate are constructed
   processDuringStartAction: Process during 'start' action, i.e. before the 
                             approval page is displayed to the user, instead of 
                             after approval and before MyProxy invocation
+  returnDnAsUsername        Use the first certificate's DN as the username 
+                            that is returned to the OAuth client (formatted in 
+                            'Globus' format, i.e. with '/' as separator)
 -->
 ````
 
