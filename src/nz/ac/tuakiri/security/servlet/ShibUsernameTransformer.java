@@ -142,10 +142,6 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 		return x == null || x.length() == 0;
 	}
 
-	public boolean isProcessDuringStart() {
-		return config.isProcessDuringStart();
-	}
-
 	@Override
 	public String createMyProxyUsername(HttpServletRequest request) {
 		debug("ShibUsernameTransformer.createMyProxyUsername");
@@ -155,6 +151,14 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 		} else {
 			return null;
 		}
+	}
+
+	public boolean isProcessDuringStart() {
+		return config.isProcessDuringStart();
+	}
+
+	public boolean isReturnDnAsUsername() {
+		return config.isReturnDnAsUsername();
 	}
 
 }
