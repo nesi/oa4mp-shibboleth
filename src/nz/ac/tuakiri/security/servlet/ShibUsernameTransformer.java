@@ -41,7 +41,7 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 			List<String> attributes = new ArrayList<String>();
 			attributeMap = new HashMap<String, String>();
 			for (String attribute : config.getAttributesToSend()) {
-				String attributeValue = request.getHeader(attribute);
+				String attributeValue = (String) request.getAttribute(attribute);
 				if (attributeValue != null) {
 					attributes.add(attribute);
 					attributes.add(attributeValue);

@@ -1,7 +1,7 @@
 oa4mp-shibboleth
 ================
 
-Version 1.1.1-nesi.1
+Version 1.1.1-nesi.2
 
 Michael Keller <michael.keller@canterbury.ac.nz>, 14/05/2014
 
@@ -22,6 +22,18 @@ of user information that is supplied by a shibboleth service provider [2]
 running on the same host as the OAuth server. But as it is fully configurable, 
 it can be adapted to retrieve and process user information that is supplied 
 to the tomcat environment that the OAuth servlet is running in by any other means.
+
+
+# Changelog
+
+1.1.1-nesi.2, 30/05/2014
+
+Changed attributes to be passed in to servlet as request attributes instead of 
+headers, for increased security.
+
+1.1.1-nesi.1, 28/05/2014
+
+Initial Release
 
 
 # Installation:
