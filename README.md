@@ -1,9 +1,9 @@
 oa4mp-shibboleth
 ================
 
-Version 1.1.1-nesi.2
+Version 1.1.2-nesi.1
 
-Michael Keller <michael.keller@canterbury.ac.nz>, 14/05/2014
+Michael Keller <michael.keller@canterbury.ac.nz>, 16/09/2014
 
 
 oa4mp-shibboleth is an extension to the 'OAuth for MyProxy' released in [1].
