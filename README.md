@@ -26,6 +26,14 @@ to the tomcat environment that the OAuth servlet is running in by any other mean
 
 # Changelog
 
+1.1.2-nesi.1, 16/09/2014
+
+Updated to build with OAuth for MyProxy version 1.1.2.
+
+Removed `returnDnAsUsername` parameter, as this is now provided by the stock 
+OAuth for MyProxy, including the conversion of the DN into Globus format
+(`convertDNToGlobusID` parameter).
+
 1.1.1-nesi.2, 30/05/2014
 
 Changed attributes to be passed in to servlet as request attributes instead of 
@@ -69,8 +77,7 @@ has to be added to the server configuration file [4]:
     attributesToSend="[attributes]"
     myproxyWorkaround="true"
     requireHeader="true"
-    processDuringStartAction="true" 
-    returnDnAsUsername="true" />
+    processDuringStartAction="true" />
 
 <!--
   attributesToSend:         CSV list of request attributes to be sent as to 
@@ -86,9 +93,6 @@ has to be added to the server configuration file [4]:
   processDuringStartAction: Process during 'start' action, i.e. before the 
                             approval page is displayed to the user, instead of 
                             after approval and before MyProxy invocation
-  returnDnAsUsername        Use the first certificate's DN as the username 
-                            that is returned to the OAuth client (formatted in 
-                            'Globus' format, i.e. with '/' as separator)
 -->
 ````
 

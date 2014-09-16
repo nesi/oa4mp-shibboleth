@@ -82,19 +82,28 @@
     Uncomment the security constraint section if you are running this server as a stand-alone tomcat
     server. If you access this server via Apache, then do not enable this section.
     -->
-<!--
+  <!-- <security-role>
+        <role-name>oa4mp-user</role-name>
+    </security-role>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>OA4MP Authorization Servlet</realm-name>
+    </login-config>
+
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>portalSecurity</web-resource-name>
-            <url-pattern>/*</url-pattern>
+            <web-resource-name>OA4MP Security</web-resource-name>
+            <url-pattern>/authorize</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
+        <auth-constraint>
+            <role-name>oa4mp-user</role-name>
+        </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
-    </security-constraint>
- -->
+    </security-constraint>-->
 
     <resource-ref>
         <description>
@@ -108,12 +117,11 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
-      <listener>
-          <!--
-          <listener-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.loader.BS2</listener-class>
-          <listener-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.OA4MPBootstrapper</listener-class>
-          -->
-          <listener-class>nz.ac.tuakiri.myproxy.oa4mp.loader.ShibOA4MPBootstrapper</listener-class>
+    <listener>
+<!--
+        <listener-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.OA4MPBootstrapper</listener-class>
+-->
+        <listener-class>nz.ac.tuakiri.myproxy.oa4mp.loader.ShibOA4MPBootstrapper</listener-class>
     </listener>
 
 

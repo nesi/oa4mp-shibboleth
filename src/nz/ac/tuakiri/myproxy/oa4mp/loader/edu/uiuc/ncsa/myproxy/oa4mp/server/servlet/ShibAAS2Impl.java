@@ -1,17 +1,16 @@
 package nz.ac.tuakiri.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet;
 
-import javax.security.auth.x500.X500Principal;
-
-import org.globus.gsi.CertUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import nz.ac.tuakiri.security.servlet.ShibUsernameTransformer;
 import edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AAS2Impl;
+import edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.MyProxyDelegationServlet;
 import edu.uiuc.ncsa.security.delegation.server.ServiceTransaction;
 import edu.uiuc.ncsa.security.delegation.servlet.TransactionState;
-import edu.uiuc.ncsa.security.delegation.token.MyX509Certificates;
 import edu.uiuc.ncsa.security.servlet.UsernameTransformer;
 
-@SuppressWarnings({ "serial", "deprecation" })
+@SuppressWarnings("serial")
 public class ShibAAS2Impl extends AAS2Impl {
 
 	private ShibUsernameTransformer transformer;
@@ -44,28 +43,26 @@ public class ShibAAS2Impl extends AAS2Impl {
 	}
 
 	@Override
-	protected void doRealCertRequest(ServiceTransaction trans,
-			String statusString) throws Throwable {
-		super.doRealCertRequest(trans, statusString);
+    protected void createRedirect(HttpServletRequest request, HttpServletResponse response, ServiceTransaction trans) throws Throwable {
+		debug("ShibAAS2Impl:createRedirect");
+		if (getTransformer() != null) {
+			String userName = trans.getUsername();
+			info("3.b. transaction has user name = " + userName);
+			// The right place to invoke the pre-processor.
+			preprocess(new TransactionState(request, response, null, trans));
+			String statusString = " transaction =" + trans.getIdentifierString() + " and client=" + trans.getClient().getIdentifierString();
+			trans.setVerifier(MyProxyDelegationServlet.getServiceEnvironment().getTokenForge().getVerifier());
+			MyProxyDelegationServlet.getServiceEnvironment().getTransactionStore().save(trans);
 
-		String userName = trans.getUsername();
-
-		MyX509Certificates myCerts = (MyX509Certificates) trans
-				.getProtectedAsset();
-
-		if (getTransformer().isReturnDnAsUsername()) {
-			if (myCerts.getX509Certificates().length > 0) {
-				X500Principal x500Principal = myCerts.getX509Certificates()[0]
-						.getSubjectX500Principal();
-				userName = CertUtil.toGlobusID(x500Principal);
-				debug(statusString + ": USERNAME = " + userName);
-			} else {
-				userName = "no_certificates_found";
-			}
-			trans.setUsername(userName);
-			info("ShibAAS2Impl.doRealCertRequest: Set username returned to client to first certificate's DN: "
-					+ userName);
+			createMPConnection(trans.getIdentifier(), userName, null, trans.getLifetime(), statusString);
+			doRealCertRequest(trans, statusString);
+			debug("4.a. verifier = " + trans.getVerifier() + ", " + statusString);
+			String cb = createCallback(trans, getFirstParameters(request));
+			info("4.a. starting redirect to " + cb + ", " + statusString);
+			response.sendRedirect(cb);
+			info("4.b. Redirect to callback " + cb + " ok, " + statusString);   
+		} else {
+			super.createRedirect(request, response, trans);
 		}
-	}
-
+    }
 }

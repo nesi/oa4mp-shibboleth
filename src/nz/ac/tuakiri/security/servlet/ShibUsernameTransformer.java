@@ -157,8 +157,4 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 		return config.isProcessDuringStart();
 	}
 
-	public boolean isReturnDnAsUsername() {
-		return config.isReturnDnAsUsername();
-	}
-
 }

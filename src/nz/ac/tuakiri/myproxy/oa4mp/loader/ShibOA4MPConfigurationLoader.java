@@ -41,7 +41,6 @@ public class ShibOA4MPConfigurationLoader<T extends ServiceEnvironmentImpl>
 			boolean myproxyWorkaround = false;
 			boolean requireHeader = false;
 			boolean processDuringStart = false;
-			boolean returnDnAsUsername = false;
 			if (!kids.isEmpty()) {
 				ConfigurationNode sn = (ConfigurationNode) kids.get(0);
 				try {
@@ -69,17 +68,12 @@ public class ShibOA4MPConfigurationLoader<T extends ServiceEnvironmentImpl>
 									sn,
 									ShibOA4MPConfigTags.SHIBBOLETH_USERNAME_TRANSFORMER_PROCESS_DURING_START));
 					debug("Read processDuringStart: " + processDuringStart);
-					returnDnAsUsername  = Boolean
-							.parseBoolean(getFirstAttribute(
-									sn,
-									ShibOA4MPConfigTags.SHIBBOLETH_USERNAME_TRANSFORMER_RETURN_DN_AS_USERNAME));
-					debug("Read returnDnAsUsername: " + returnDnAsUsername);
 				} catch (Throwable t) {
 					info("Error loading authorization configuration. Disabling use of headers");
 				}
 			}
 			shibUsernameTransformerConfig = new ShibUsernameTransformerConfig(
-					attributesToSend, myproxyWorkaround, requireHeader, processDuringStart, returnDnAsUsername);
+					attributesToSend, myproxyWorkaround, requireHeader, processDuringStart);
 		}
 		return shibUsernameTransformerConfig;
 	}

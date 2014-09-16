@@ -7,7 +7,7 @@ import au.com.bytecode.opencsv.CSVReader;
 
 public class ShibUsernameTransformerConfig {
 	public ShibUsernameTransformerConfig(String attributesToSendString,
-			boolean myproxyWorkaround, boolean requireHeader, boolean processDuringStart, boolean returnDnAsUsername) {
+			boolean myproxyWorkaround, boolean requireHeader, boolean processDuringStart) {
 		if (attributesToSendString != null) {
 			CSVReader reader = new CSVReader(new StringReader(
 					attributesToSendString));
@@ -23,14 +23,12 @@ public class ShibUsernameTransformerConfig {
 		this.myproxyWorkaround = myproxyWorkaround;
 		this.requireHeader = requireHeader;
 		this.processDuringStart = processDuringStart;
-		this.returnDnAsUsername = returnDnAsUsername;
 	}
 
 	private final String[] attributesToSend;
 	private final boolean myproxyWorkaround;
 	private final boolean requireHeader;
 	private final boolean processDuringStart;
-	private final boolean returnDnAsUsername;
 
 	public boolean isMyproxyWorkaround() {
 		return myproxyWorkaround;
@@ -46,10 +44,6 @@ public class ShibUsernameTransformerConfig {
 	
 	public boolean isProcessDuringStart() {
 		return processDuringStart;
-	}
-
-	public boolean isReturnDnAsUsername() {
-		return returnDnAsUsername;
 	}
 
 }
