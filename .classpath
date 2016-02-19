@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src" including="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" sourcepath="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/javax/inject/javax.inject/1/javax.inject-1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/javax/servlet/jstl/1.2/jstl-1.2.jar" sourcepath="M2_REPO/javax/servlet/jstl/1.2/jstl-1.2-sources.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/myproxy/oa4mp-server-loader-oauth1/1.2/oa4mp-server-loader-oauth1-1.2.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/myproxy/oa4mp-server-loader-oauth1/1.2/oa4mp-server-loader-oauth1-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/myproxy/oa4mp-server-loader-oauth1/1.2/oa4mp-server-loader-oauth1-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/myproxy/oa4mp-server-api/3.2.1/oa4mp-server-api-3.2.1.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/myproxy/oa4mp-server-api/3.2.1/oa4mp-server-api-3.2.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/myproxy/oa4mp-server-api/3.2.1/oa4mp-server-api-3.2.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-server/3.2.1/ncsa-security-delegation-server-3.2.1.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-server/3.2.1/ncsa-security-delegation-server-3.2.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-server/3.2.1/ncsa-security-delegation-server-3.2.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-common/3.2.1/ncsa-security-delegation-common-3.2.1.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-common/3.2.1/ncsa-security-delegation-common-3.2.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-common/3.2.1/ncsa-security-delegation-common-3.2.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-util/1.2/ncsa-security-util-1.2.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-util/1.2/ncsa-security-util-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/ncsa-security-util/1.2/ncsa-security-util-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" sourcepath="M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-codec/commons-codec/1.4/commons-codec-1.4-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/commons-cli/commons-cli/1.2/commons-cli-1.2.jar" sourcepath="M2_REPO/commons-cli/commons-cli/1.2/commons-cli-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-cli/commons-cli/1.2/commons-cli-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.0-beta2/httpclient-4.0-beta2.jar" sourcepath="M2_REPO/org/apache/httpcomponents/httpclient/4.0-beta2/httpclient-4.0-beta2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" sourcepath="M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-core/1.2/ncsa-security-core-1.2.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-core/1.2/ncsa-security-core-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/ncsa-security-core/1.2/ncsa-security-core-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/commons-configuration/commons-configuration/1.7/commons-configuration-1.7.jar" sourcepath="M2_REPO/commons-configuration/commons-configuration/1.7/commons-configuration-1.7-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-configuration/commons-configuration/1.7/commons-configuration-1.7-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar" sourcepath="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.6/commons-lang-2.6.jar" sourcepath="M2_REPO/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.jar" sourcepath="M2_REPO/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar" sourcepath="M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar" sourcepath="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-storage/3.2.1/ncsa-security-storage-3.2.1.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-storage/3.2.1/ncsa-security-storage-3.2.1-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/ncsa-security-storage/3.2.1/ncsa-security-storage-3.2.1-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/net/sf/opencsv/opencsv/2.0/opencsv-2.0.jar" sourcepath="M2_REPO/net/sf/opencsv/opencsv/2.0/opencsv-2.0-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/net/sf/opencsv/opencsv/2.0/opencsv-2.0-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-servlet/1.2/ncsa-security-servlet-1.2.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/ncsa-security-servlet/1.2/ncsa-security-servlet-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/ncsa-security-servlet/1.2/ncsa-security-servlet-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/myproxy/myproxy-logon/1.8/myproxy-logon-1.8.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/myproxy/myproxy-logon/1.8/myproxy-logon-1.8-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/myproxy/myproxy-logon/1.8/myproxy-logon-1.8-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-oauth-1.0a/1.2/ncsa-security-oauth-1.0a-1.2.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-oauth-1.0a/1.2/ncsa-security-oauth-1.0a-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/delegation/ncsa-security-oauth-1.0a/1.2/ncsa-security-oauth-1.0a-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-client/1.2/ncsa-security-delegation-client-1.2.jar" sourcepath="M2_REPO/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-client/1.2/ncsa-security-delegation-client-1.2-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/edu/uiuc/ncsa/security/delegation/ncsa-security-delegation-client/1.2/ncsa-security-delegation-client-1.2-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/net/oauth/core/oauth-httpclient4/20090617/oauth-httpclient4-20090617.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/oauth/core/oauth-consumer/20100527/oauth-consumer-20100527.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/oauth/core/oauth/20100527/oauth-20100527.jar" sourcepath="M2_REPO/net/oauth/core/oauth/20100527/oauth-20100527-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/net/oauth/core/oauth/20100527/oauth-20100527-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/net/oauth/core/oauth-provider/20100527/oauth-provider-20100527.jar" sourcepath="M2_REPO/net/oauth/core/oauth-provider/20100527/oauth-provider-20100527-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/net/oauth/core/oauth-provider/20100527/oauth-provider-20100527-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.17/mysql-connector-java-5.1.17.jar"/>
+  <classpathentry kind="var" path="M2_REPO/postgresql/postgresql/8.4-702.jdbc3/postgresql-8.4-702.jdbc3.jar" sourcepath="M2_REPO/postgresql/postgresql/8.4-702.jdbc3/postgresql-8.4-702.jdbc3-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/C:/Users/malanrw/.m2/repository/postgresql/postgresql/8.4-702.jdbc3/postgresql-8.4-702.jdbc3-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
+</classpath>

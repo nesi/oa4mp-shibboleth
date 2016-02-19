@@ -2,16 +2,17 @@ package nz.ac.tuakiri.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.se
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+ 
 import nz.ac.tuakiri.security.servlet.ShibUsernameTransformer;
-import edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AAS2Impl;
+import edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.OA2AuthorizationServer;
+//import edu.uiuc.ncsa.myproxy.oa4mp.servlet.AAS2Impl;
 import edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.MyProxyDelegationServlet;
 import edu.uiuc.ncsa.security.delegation.server.ServiceTransaction;
 import edu.uiuc.ncsa.security.delegation.servlet.TransactionState;
 import edu.uiuc.ncsa.security.servlet.UsernameTransformer;
 
 @SuppressWarnings("serial")
-public class ShibAAS2Impl extends AAS2Impl {
+public class ShibAAS2Impl extends OA2AuthorizationServer /*AbstractAuthorizationServletImpl*/ /*AAS2Impl*/ {
 
 	private ShibUsernameTransformer transformer;
 
@@ -60,7 +61,7 @@ public class ShibAAS2Impl extends AAS2Impl {
 			String cb = createCallback(trans, getFirstParameters(request));
 			info("4.a. starting redirect to " + cb + ", " + statusString);
 			response.sendRedirect(cb);
-			info("4.b. Redirect to callback " + cb + " ok, " + statusString);   
+			info("4.b. Redirect to callback " + cb + " ok, " + statusString);
 		} else {
 			super.createRedirect(request, response, trans);
 		}

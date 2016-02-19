@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
   <artifactId>oa4mp-shibboleth</artifactId>
-  <version>1.1.2-nesi.1</version>
+  <version>2.0-nesi.0</version>
     <name>OAuth for MyProxy for Shibboleth</name>
     <packaging>war</packaging>
   <build>
@@ -16,13 +16,21 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <configuration>
+              <downloadSources>true</downloadSources>
+              <downloadJavadocs>true</downloadJavadocs>
+          </configuration>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
   	<dependency>
   		<groupId>edu.uiuc.ncsa.myproxy</groupId>
-  		<artifactId>oa4mp-server-loader-oauth1</artifactId>
-  		<version>1.1.2</version>
+  		<artifactId>oa4mp-server-loader-oauth2</artifactId>
+  		<version>3.2.1</version>
   	</dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -38,15 +46,18 @@
         <dependency>
         	<groupId>edu.uiuc.ncsa.myproxy</groupId>
         	<artifactId>oa4mp-server-api</artifactId>
-        	<version>1.1.2</version>
+        	<version>3.2.1</version>
         </dependency>
         <dependency>
         	<groupId>edu.uiuc.ncsa.myproxy</groupId>
         	<artifactId>oa4mp-webapp</artifactId>
-        	<version>1.1.2</version>
+        	<version>3.2.1</version>
         	<type>war</type>
                 <scope>runtime</scope>
         </dependency>
   </dependencies>
   <groupId>nz.ac.tuakiri.myproxy</groupId>
+  
+  
+  
 </project>

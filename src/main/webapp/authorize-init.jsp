@@ -19,7 +19,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<title>MyProxy Delegation Portal Authorization Page</title>
+<title>NeSI MyProxy Authorization Page</title>
 
 </head>
 <style type="text/css">
@@ -30,10 +30,18 @@
 .unhidden {
 	display: table-row;
 }
+
+html{font-family:Arial;font-weight:300}
+body{margin:0;}
+
 </style>
 <body>
-	<h2>Welcome to the OAuth for MyProxy Client Authorization Page</h2>
-	The Client below is requesting access to your user data.
+         <a class="navbar-brand" href="/" title="Home"><img src="logo.png" alt="Home" width=170/></a>
+         
+	<h3>NeSI MyProxy Client Authorization Page </h3>
+	This allows Tuakiri information to be exchanged with Globus.<br/>
+	The Client below is requesting access to your user data.<br/>
+               If you approve, please click 'Approve'.
 	<c:choose>
 		<c:when test="${(userName == '' ||userName == null)}">
                If you approve, please sign in with your username and password.

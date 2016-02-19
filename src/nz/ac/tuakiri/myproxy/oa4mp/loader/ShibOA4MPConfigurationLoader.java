@@ -10,12 +10,17 @@ import nz.ac.tuakiri.security.servlet.ShibUsernameTransformer;
 
 import org.apache.commons.configuration.tree.ConfigurationNode;
 
-import edu.uiuc.ncsa.myproxy.oa4mp.loader.OA4MPConfigurationLoader;
+//RM for newer underlying API 3.2.1
+import edu.uiuc.ncsa.myproxy.oa4mp.oauth2.loader.OA2ConfigurationLoader;
+//import edu.uiuc.ncsa.security.core.util.ConfigurationLoader;
+
 import edu.uiuc.ncsa.myproxy.oa4mp.server.ServiceEnvironmentImpl;
 
 @SuppressWarnings("serial")
 public class ShibOA4MPConfigurationLoader<T extends ServiceEnvironmentImpl>
-		extends OA4MPConfigurationLoader<T> {
+		//extends ConfigurationLoader<T> {
+  	//RM for newer underlying API 3.2.1
+		extends OA2ConfigurationLoader<T> {
 
 	private ShibUsernameTransformerConfig shibUsernameTransformerConfig;
 
@@ -25,7 +30,7 @@ public class ShibOA4MPConfigurationLoader<T extends ServiceEnvironmentImpl>
 
 	@Override
 	public T createInstance() {
-		T t = super.createInstance();
+		T t =  super.createInstance();
 		ShibUsernameTransformer usernameTransformer = new ShibUsernameTransformer(
 				getShibUsernameTransformerConfig(), t.getMyLogger());
 		t.setUsernameTransformer(usernameTransformer);
