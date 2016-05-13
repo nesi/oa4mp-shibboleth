@@ -58,7 +58,7 @@
         <servlet-name>authorize</servlet-name>
 
         <servlet-class>nz.ac.tuakiri.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.ShibAAS2Impl</servlet-class>
-<!-- 
+<!--
         <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AuthorizationServlet</servlet-class>
         <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AAS2Impl</servlet-class>
 -->
@@ -135,12 +135,12 @@
     The following two sections are for the new XML based-configuration file format. Use this
      if at all possible. The first gives the complete path to the configuration file.
      -->
-     <!--
+
     <context-param>
           <param-name>oa4mp:server.config.file</param-name>
-          <param-value>/path/to/your/config-file.xml</param-value>
+          <param-value>/opt/oa4mp/oa4mp2-server-cfg.xml</param-value>
       </context-param>
-    -->
+
     <!--
        This (optional) parameter tells which named configuration within the file to use. If there
         is only a single configuration, that is used.

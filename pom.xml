@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
   <artifactId>oa4mp-shibboleth</artifactId>
-  <version>2.0-nesi.0</version>
+  <version>2.0-nesi.1</version>
     <name>OAuth for MyProxy for Shibboleth</name>
     <packaging>war</packaging>
   <build>
@@ -19,11 +19,73 @@
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-eclipse-plugin</artifactId>
+          <version>2.3.2</version>
           <configuration>
               <downloadSources>true</downloadSources>
               <downloadJavadocs>true</downloadJavadocs>
           </configuration>
       </plugin>
+      <!--  RM added to copy static content in for branding/look and feel -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>src\main\webapp\static</directory>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      
+	   <!-- replace version in file -->  
+	   <plugin>  
+	    <groupId>com.google.code.maven-replacer-plugin</groupId>  
+	    <artifactId>maven-replacer-plugin</artifactId>  
+	    <version>1.3.2</version>  
+	    <executions>  
+	     <execution>  
+	      <!-- the replace should happen before the app is packaged -->  
+	      <phase>prepare-package</phase>  
+	      <goals>  
+	       <goal>replace</goal>  
+	      </goals>  
+	     </execution>  
+	    </executions>  
+	  
+	    <configuration>  
+	     <includes>  
+	      <!-- replace the token in this file -->  
+	      <include>target/${project.artifactId}${project.artifactId}/version.jsp</include>  
+	     </includes>  
+	     <regex>false</regex>  
+	     <!-- the name of the token to replace -->  
+	     
+	     <replacements> 
+           <replacement> 
+             <token>PROJECT_VERSION</token> 
+             <value>${project.version}</value> 
+           </replacement> 
+           <replacement> 
+             <token>GROUPID</token> 
+             <value>${project.groupid}</value> 
+           </replacement> 
+           <replacement> 
+             <token>ARTIFACTID</token> 
+             <value>${project.artifactid}</value> 
+           </replacement> 
+         </replacements> 
+	     
+	     <!--  replace it with the maven project version 
+	     <token>PROJECT_VERSION</token>  
+	     <value>${project.version}</value>  
+		-->
+
+	    </configuration>  
+	   </plugin>        
+	      
+      
     </plugins>
   </build>
   <dependencies>
