@@ -1,14 +1,14 @@
 oa4mp-shibboleth
 ================
 
-Version 2.0-nesi.1
+Version 2.0-nesi.2
 
-Ruan Malan <ruan.malan@nesi.co.nz>, 13/05/2015
+Ruan Malan <ruan.malan@nesi.co.nz>, 17/05/2015
 
-Upgraded to use Otauth2 and underlying OAuth2 libraries
+Upgraded to use Oauth2 and underlying OAuth2 libraries
 Expects /opt/oa4mp/oa4mp2-server-cfg.xml
 Content in that cfg.xml same as old /opt/oa4mp/oa4mp2-server-cfg.xml
-but create and point to a new 
+but create and point to a new
 <fileStore path="/opt/oa4mp/storage2"> as the different versions are
 incompatible on how the folder is used
 
@@ -39,10 +39,15 @@ to the tomcat environment that the OAuth servlet is running in by any other mean
 
 # Changelog
 
+2.0-nesi.2, 17/05/2016
+
+Modified some underlying compile time dependencies in POM to try and resolve
+classloader issues in Tomcat 8
+
 2.0-nesi.1, 13/05/2016
 
 Updated to build with OAuth2 for MyProxy version 3.2.1
-Refactored some classes that have bene changed in structure since
+Refactored some classes that have been changed in structure since
 
 1.1.2-nesi.1, 16/09/2014
 
