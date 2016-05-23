@@ -118,12 +118,12 @@
     </resource-ref>
 
     <listener>
-<!--
-        <listener-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.OA4MPBootstrapper</listener-class>
--->
         <listener-class>nz.ac.tuakiri.myproxy.oa4mp.loader.ShibOA4MPBootstrapper</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>nz.ac.tuakiri.myproxy.oa4mp.loader.BootstrapTest</listener-class>
+    </listener>
 
     <error-page>
         <exception-type>edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.TooManyRequestsException</exception-type>
