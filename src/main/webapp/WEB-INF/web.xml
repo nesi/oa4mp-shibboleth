@@ -137,7 +137,7 @@
      -->
 
     <context-param>
-          <param-name>oa4mp:server.config.file</param-name>
+          <param-name>oa4mp:oauth2.server.config.file</param-name>
           <param-value>/opt/oa4mp/oa4mp2-server-cfg.xml</param-value>
       </context-param>
 

@@ -8,6 +8,9 @@ import javax.servlet.ServletContextListener;
 
 public class BootstrapTest implements ServletContextListener {
     private static String OA4MP_CONFIG_FILE_KEY = "oa4mp:server.config.file";
+    public static final String OA2_CONFIG_FILE_KEY = "oa4mp:oauth2.server.config.file";
+
+    public static final String OA2_CONFIG_NAME_KEY = "oa4mp:oauth2.server.config.name";
 
 	public BootstrapTest() {
 		// TODO Auto-generated constructor stub
@@ -37,6 +40,14 @@ public class BootstrapTest implements ServletContextListener {
 		} else {
 			System.out.println("OA4MP_CONFIG_FILE_KEY :" + OA4MP_CONFIG_FILE_KEY + "=" + foundStr);
 		}
+		
+		foundStr = ctx.getInitParameter(OA2_CONFIG_FILE_KEY);
+		if (foundStr == null) {
+			System.out.println("NO entry for OA2_CONFIG_FILE_KEY - " + OA2_CONFIG_FILE_KEY );
+		} else {
+			System.out.println("OA2_CONFIG_FILE_KEY :" + OA2_CONFIG_FILE_KEY + "=" + foundStr);
+		}
+		
 	}
 
 	@Override
