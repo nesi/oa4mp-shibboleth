@@ -16,7 +16,9 @@
     <!--what gets put in the browser's title bar -->
     <servlet>
         <servlet-name>initiate</servlet-name>
-        <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.InitServlet</servlet-class>
+          <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.InitServlet</servlet-class>
+          <!-- previously servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.InitServlet</servlet-class -->
+          <!-- oauth2 sample web.xml has servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.InitServlet</servlet-class -->
     </servlet>
     <servlet-mapping>
         <servlet-name>initiate</servlet-name>
@@ -25,7 +27,9 @@
 
     <servlet>
         <servlet-name>accessToken</servlet-name>
-                <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AccessTokenServlet</servlet-class>
+                <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.AccessTokenServlet</servlet-class>
+                <!-- previously servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AccessTokenServlet</servlet-class -->
+                <!-- oauth2 sample web.xml has servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.AccessTokenServlet</servlet-class -->
         <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -36,7 +40,9 @@
 
     <servlet>
         <servlet-name>getCert</servlet-name>
-        <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.ACS2Impl</servlet-class>
+        <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.CServlet2</servlet-class>
+        <!-- previously servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.ACS2Impl</servlet-class -->
+        <!-- oauth2 sample web.xml has servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.CServlet2</servlet-class -->
 
     </servlet>
     <servlet-mapping>
@@ -46,6 +52,7 @@
 
     <servlet>
         <servlet-name>error</servlet-name>
+        <!-- unchanged -->
         <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.ErrorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -56,12 +63,16 @@
 
     <servlet>
         <servlet-name>authorize</servlet-name>
-
+        <!-- this class extends OA2AuthorizationServlet -->
         <servlet-class>nz.ac.tuakiri.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.ShibAAS2Impl</servlet-class>
-<!--
+<!-- previously
         <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.loader.edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AuthorizationServlet</servlet-class>
         <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AAS2Impl</servlet-class>
 -->
+        <!-- oauth2 sample web.xml has servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.AuthServer2</servlet-class>
+             But the class is not in the 3.2.1 API http://grid.ncsa.illinois.edu/myproxy/oauth/apidocs/
+        -->
+
     </servlet>
     <servlet-mapping>
         <servlet-name>authorize</servlet-name>
@@ -70,6 +81,7 @@
 
     <servlet>
         <servlet-name>clientVetting</servlet-name>
+        <!-- unchanged -->
         <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.RegistrationServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -77,6 +89,16 @@
         <servlet-name>clientVetting</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <!-- New in the OAuth2 sample web.xml and exists in 3.2.1 API -->
+    <servlet>
+           <servlet-name>userInfo</servlet-name>
+           <servlet-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.servlet.UserInfoServlet</servlet-class>
+       </servlet>
+       <servlet-mapping>
+           <servlet-name>userInfo</servlet-name>
+           <url-pattern>/userinfo</url-pattern>
+       </servlet-mapping>
 
     <!--
     Uncomment the security constraint section if you are running this server as a stand-alone tomcat
@@ -118,7 +140,10 @@
     </resource-ref>
 
     <listener>
+        <!-- This class extends OA2Bootstrapper -->
         <listener-class>nz.ac.tuakiri.myproxy.oa4mp.loader.ShibOA4MPBootstrapper</listener-class>
+        <!--  oauth2 sample web.xml has listener-class>edu.uiuc.ncsa.myproxy.oa4mp.oauth2.loader.BS2</listener-class -->
+        <!-- does not exist the 3.2.1 API http://grid.ncsa.illinois.edu/myproxy/oauth/apidocs/ while OA4MPBootstrapper does -->
     </listener>
 
     <listener>
