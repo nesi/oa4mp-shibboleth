@@ -39,7 +39,7 @@
         </configuration>
       </plugin>
 
-	   <!-- replace version in file -->
+	   <!-- replace version in file, says updating file but content seems unchanged -->
 	   <plugin>
 	    <groupId>com.google.code.maven-replacer-plugin</groupId>
 	    <artifactId>maven-replacer-plugin</artifactId>
@@ -57,7 +57,7 @@
 	    <configuration>
 	     <includes>
 	      <!-- replace the token in this file -->
-	      <include>target/${project.artifactId}${project.artifactId}/version.jsp</include>
+	      <include>target/${project.artifactId}-${project.version}/version.jsp</include>
 	     </includes>
 	     <regex>false</regex>
 	     <!-- the name of the token to replace -->
@@ -69,11 +69,11 @@
            </replacement>
            <replacement>
              <token>GROUPID</token>
-             <value>${project.groupid}</value>
+             <value>${project.groupId}</value>
            </replacement>
            <replacement>
              <token>ARTIFACTID</token>
-             <value>${project.artifactid}</value>
+             <value>${project.artifactId}</value>
            </replacement>
          </replacements>
 
@@ -84,6 +84,22 @@
 
 	    </configuration>
 	   </plugin>
+
+		 <!-- should create META-INF content, doesnt seem to-->
+		 <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-jar-plugin</artifactId>
+       <configuration>
+         <archive>
+           <manifest>
+             <mainClass>test.App</mainClass>
+             <addDefaultImplementationEntries>
+               true
+             </addDefaultImplementationEntries>
+           </manifest>
+         </archive>
+       </configuration>
+     </plugin>
 
 
     </plugins>
