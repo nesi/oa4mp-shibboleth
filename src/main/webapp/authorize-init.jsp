@@ -1,6 +1,7 @@
 <%--
-  User: Michael Keller
-  Date: 13/05/2014
+  User: Jeff Gaynor
+  Date: 9/25/11
+  Time: 6:42 PM
   Properties supplied:
   * clientName = the name of the client
   * clientHome = the home uri of the client
@@ -12,120 +13,96 @@
   * authorizationGrant = the identifier for this transaction
   * action = name of field containing the action the servlet should take
   * actionOk = content of action field in this case telling the service to continue processing.
-  * attributeMap = map of shibboleth attributes to be supplied to MyProxy
 
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<title>NeSI MyProxy Authorization Page</title>
+    <title>MyProxy Delegation Portal Authorization Page</title>
 
 </head>
 <style type="text/css">
-.hidden {
-	display: none;
-}
+    .hidden {
+        display: none;
+    }
 
-.unhidden {
-	display: table-row;
-}
-
-html{font-family:Arial;font-weight:300}
-body{margin:0;}
-
+    .unhidden {
+        display: table-row;
+    }
 </style>
 <body>
-         <a class="navbar-brand" href="/" title="Home"><img src="logo.png" alt="Home" width=170/></a>
-         
-	<h3>NeSI MyProxy Client Authorization Page </h3>
-	This allows Tuakiri information to be exchanged with Globus.<br/>
-	The Client below is requesting access to your user data.<br/>
-               If you approve, please click 'Approve'.
-	<c:choose>
-		<c:when test="${(userName == '' ||userName == null)}">
-               If you approve, please sign in with your username and password.
-       </c:when>
-		<c:otherwise>
-               If you approve, please click 'Approve'.
-       </c:otherwise>
-	</c:choose>
-	<p>
-	<form action="${actionToTake}" method="POST">
-		<table>
-			<tr>
-				<td>
-					<table border=1>
-						<tr>
-							<td valign="top">
-								<table>
-									<tr valign="top">
-										<th colspan="2">Client Information</th>
-									</tr>
-									<tr>
-										<td><i>Name:</i></td>
-										<td>${clientName}</td>
-									</tr>
-									<tr>
-										<td><i>URL:</i></td>
-										<td>${clientHome}</td>
-									</tr>
-								</table>
-							</td>
-							<td valign="top">
-								<table>
-									<tr valign="top">
-										<th colspan="2">User Data</th>
-									</tr>
-									<c:choose>
-										<c:when test="${attributeMap != null}">
-											<c:forEach items="${attributeMap}" var="parameter">
-												<tr>
-													<td><i>${parameter.key}</i></td>
-													<td>${parameter.value}</td>
-												</tr>
-											</c:forEach>
-										</c:when>
-										<c:otherwise>
-											<tr>
-												<td><i>Username</i></td>
-												<td><c:choose>
-														<c:when test="${(userName != '' && userName != null)}">
-															<input type="text" size="25" name="${AuthUserName}" />
-														</c:when>
-														<c:otherwise>
-                                                               ${userName}
-                                                       </c:otherwise>
-													</c:choose></td>
-											</tr>
-											<c:if test="${(userName != '' && userName != null)}">
-												<tr>
-													<td><i>Password</i></td>
-													<td><input type="password" size="25"
-														name="${AuthPassword}" /></td>
-												</tr>
-											</c:if>
-										</c:otherwise>
-									</c:choose>
-								</table>
+<h2>Welcome to the OAuth 2.0 for MyProxy Client Authorization Page</h2>
+The Client below is requesting access to your account. If you approve,
+please sign in with your username and password.
+<p>
 
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr>
-				<td align="center"><input type="submit"
-					value="${(userName == '' || userName== null)?  'Sign In' : 'Approve'}" />
-					<a href="${clientHome}" STYLE="TEXT-DECORATION: NONE"><input
-						type="button" name="cancel" value="Cancel" /></a></td>
-				<td align="center" colspan="2"><b><font color="red">${retryMessage}</font></b></td>
-			</tr>
-		</table>
-		<input type="hidden" id="status" name="${action}" value="${actionOk}" />
-		<input type="hidden" id="token" name="${tokenKey}"
-			value="${authorizationGrant}" />
-	</form>
+<form action="${actionToTake}" method="POST">
+    <table width="800" cellspacing="0" border="2">
+        <tr>
+            <td valign="top">
+                <table border=1>
+                    <tr valign="top">
+                        <th>Client Information</th>
+                    </tr>
+                    <tr>
+                        <td> The client listed below is requesting access to your
+                            account. If you approve, please sign in.
+                            <br><br>
+                            <i>Name:</i> ${clientName}
+                            <br>
+                            <i>URL:</i> ${clientHome}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td valign="top">
+                <table width="350" cellspacing="0" cellpadding="0" align="right" border="0">
+                    <tr>
+                        <th colspan="2">Sign in</th>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td><input type="text" size="25" name="${AuthUserName}"
+                                   value="${userName}"/></td>
+                    </tr>
+                    <tr class="${(userName == "" || userName == null)? "unhidden" : "hidden"}">
+                        <td>Password</td>
+                        <td>
+                            <input type="password" size="25" name="${AuthPassword}"/>
+                        </td>
+                    </tr>
+                 <!-- Unhide this when you want to support it. All the machinery is in place.
+                     <tr>
+                        <td>Refresh token lifetime</td>
+                        <td><input type="text" size="25" name="${AuthRTL}"
+                                   value="${rtLifetime}"/></td>
+                    </tr>
+                    -->
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Sign In"/></td>
+                        <td>
+                            <a href="${clientHome}" STYLE="TEXT-DECORATION: NONE"><input type="button"
+                                                                                         name="cancel"
+                                                                                         value="Cancel"/></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b><font color="red">${retryMessage}</font></b></td>
+                    </tr>
+
+                </table>
+                <!-- Close sign in table -->
+                <input type="hidden" id="status" name="${action}"
+                       value="${actionOk}"/>
+                <input type="hidden" id="token" name="${tokenKey}" value="${authorizationGrant}"/>
+                <input type="hidden" id="state" name="${stateKey}" value="${authorizationState}"/>
+            </td>
+        </tr>
+    </table>
+</form>
 
 </body>
 </html>
