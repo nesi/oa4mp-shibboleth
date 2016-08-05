@@ -42,6 +42,17 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 			attributeMap = new HashMap<String, String>();
 			for (String attribute : config.getAttributesToSend()) {
 				String attributeValue = (String) request.getAttribute(attribute);
+				//RM find it under headers
+				if (attributeValue == null) {
+					attributeValue = (String) request.getHeader(attribute);
+					if (attributeValue != null) {
+						info("ShibUsernameTransformer: found value for request header '" + attribute
+								+ "': '" + attributeValue + "'");
+					}
+				} else {
+					info("ShibUsernameTransformer: found value for request attribute '" + attribute
+							+ "': '" + attributeValue + "'");
+				}
 				if (attributeValue != null) {
 					attributes.add(attribute);
 					attributes.add(attributeValue);
@@ -49,10 +60,8 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 					attributeMap.put(escapeHtml(attribute),
 							escapeHtml(attributeValue));
 
-					info("ShibUsernameTransformer: found value for request attribute '" + attribute
-							+ "': '" + attributeValue + "'");
 				} else {
-					info("ShibUsernameTransformer: header attribute '" + attribute
+					info("ShibUsernameTransformer: header/attribute '" + attribute
 							+ "' not present in request");
 				}
 			}
