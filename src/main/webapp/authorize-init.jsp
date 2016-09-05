@@ -103,6 +103,31 @@ please sign in with your username and password.
         </tr>
     </table>
     
+
+      <h1>Session HTTP Request Parameters Received</h1>
+	  <table border="1" cellpadding="4" cellspacing="0">
+	  <%
+ 		java.util.Map<String, String[]> Params 
+ 			= request.getParameterMap();
+	     
+	     java.util.Iterator pNames = Params.keySet().iterator();
+	     while (pNames.hasNext()) {
+	        String name = (String) pNames.next();
+	        String[] valA = Params.get(name);
+	        String value = null;
+	        if ((valA != null)&&(valA.length > 0)) {
+	        	value = valA[0]; 
+	        	value = normalize(value);
+	        }
+	  %>
+	     <tr><td><%= name %></td><td><%= value %></td></tr>
+	  <%
+	     }
+	  %>
+	  </table>
+    
+
+
     
       <h1>HTTP Request Headers Received</h1>
 	  <table border="1" cellpadding="4" cellspacing="0">
@@ -118,6 +143,52 @@ please sign in with your username and password.
 	  %>
 	  </table>
     
+    
+    
+      <h1>Session stored HTTP Request Parameters Received</h1>
+	  <table border="1" cellpadding="4" cellspacing="0">
+	  <%
+ 		java.util.Map<String, String[]> lastParams 
+ 			= nz.ac.tuakiri.myproxy.oa4mp.loader.RequestIntoSessionFilter.getLastRequestParams(request.getSession());
+	     
+	     java.util.Iterator lNames = lastParams.keySet().iterator();
+	     while (lNames.hasNext()) {
+	        String name = (String) lNames.next();
+	        String[] valA = lastParams.get(name);
+	        String value = null;
+	        if ((valA != null)&&(valA.length > 0)) {
+	        	value = valA[0]; 
+	        	value = normalize(value);
+	        }
+	  %>
+	     <tr><td><%= name %></td><td><%= value %></td></tr>
+	  <%
+	     }
+	  %>
+	  </table>
+    
+    
+      <h1>Session stored HTTP Request Headers Received</h1>
+	  <table border="1" cellpadding="4" cellspacing="0">
+	  <%
+ 		java.util.Map<String, String> lastHeaders 
+ 			= nz.ac.tuakiri.myproxy.oa4mp.loader.RequestIntoSessionFilter.getLastRequestHeaders(request.getSession());
+	     
+	     java.util.Iterator lhNames = lastHeaders.keySet().iterator();
+	     while (lhNames.hasNext()) {
+	        String name = (String) lhNames.next();
+	        String value = lastHeaders.get(name);
+         	value = normalize(value);
+	  %>
+	     <tr><td><%= name %></td><td><%= value %></td></tr>
+	  <%
+	     }
+	  %>
+	  </table>
+    
+    
+
+
     
 </form>
 

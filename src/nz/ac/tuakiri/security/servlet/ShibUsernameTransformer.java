@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import au.com.bytecode.opencsv.CSVWriter;
+import nz.ac.tuakiri.myproxy.oa4mp.loader.RequestIntoSessionFilter;
 import nz.ac.tuakiri.myproxy.oa4mp.server.servlet.ShibUsernameTransformerConfig;
 import edu.uiuc.ncsa.myproxy.oa4mp.server.servlet.AbstractAuthorizationServlet;
 import edu.uiuc.ncsa.security.core.Logable;
@@ -40,19 +41,60 @@ public class ShibUsernameTransformer implements UsernameTransformer, Logable {
 
 			List<String> attributes = new ArrayList<String>();
 			attributeMap = new HashMap<String, String>();
+			Map<String, String[]> lastParams = RequestIntoSessionFilter.getLastRequestParams(request.getSession());
+			if (lastParams == null) {
+				error("ShibUsernameTransformer: found no lastParams");
+			} else {
+				info("ShibUsernameTransformer: found lastParams, size=" + lastParams.size());
+			}
+			
+			Map<String, String> lastHeaders = RequestIntoSessionFilter.getLastRequestHeaders(request.getSession());
+			if (lastHeaders == null) {
+				error("ShibUsernameTransformer: found no lastHeaders");
+			} else {
+				info("ShibUsernameTransformer: found lastHeaders, size=" + lastHeaders.size());
+			}
+			
+			
 			for (String attribute : config.getAttributesToSend()) {
 				String attributeValue = (String) request.getAttribute(attribute);
-				//RM find it under headers
+				//RM find it under lastParams
+				if (attributeValue != null)  {
+					info("ShibUsernameTransformer: found value for request attribute '" + attribute
+							+ "': '" + attributeValue + "'");
+				} 
+				
+				if ((lastParams != null) && (attributeValue == null)) {
+						String[] valA = (String[]) lastParams.get(attribute);
+						if ((valA != null) && (valA.length > 0)) {
+							attributeValue = valA[0];
+							info("ShibUsernameTransformer: found value for request lastParam '" + attribute
+									+ "': '" + attributeValue + "'");
+						}
+				}
+
 				if (attributeValue == null) {
 					attributeValue = (String) request.getHeader(attribute);
 					if (attributeValue != null) {
 						info("ShibUsernameTransformer: found value for request header '" + attribute
 								+ "': '" + attributeValue + "'");
 					}
-				} else {
-					info("ShibUsernameTransformer: found value for request attribute '" + attribute
-							+ "': '" + attributeValue + "'");
 				}
+
+				if ((lastHeaders != null) && (attributeValue == null)) {
+					attributeValue = (String)lastHeaders.get(attribute); 
+					if (attributeValue != null) {
+						info("ShibUsernameTransformer: found value for stored request header '" + attribute
+								+ "': '" + attributeValue + "'");
+					}
+				}
+
+				
+				if (attributeValue == null) {
+					warn("ShibUsernameTransformer: found no "+attribute+" in request and headers and stored versions thereof");
+				}
+
+				
 				if (attributeValue != null) {
 					attributes.add(attribute);
 					attributes.add(attributeValue);
